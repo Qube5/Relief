@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Sign In</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </link>
+
+
+  <script type="text/javascript">
+    function myFunction() {
+      var element = document.getElementById("chooser");
+      var selected = element.options[element.selectedIndex].value;
+      if(selected === "victim") {
+        $("#victim1").show();
+        $("#victim2").show();
+        $("#victim3").show();
+        $("#victim4").show();
+        $("#donor").hide();
+      }
+      else if(selected === "donor") {
+          $("#donor").show();
+          $("#victim1").hide();
+          $("#victim2").hide();
+          $("#victim3").hide();
+          $("#victim4").hide();
+      }
+      else if(selected === "donor") {
+          $("#donor").hide();
+          $("#victim1").hide();
+          $("#victim2").hide();
+          $("#victim3").hide();
+          $("#victim4").hide();
+      }
+
+    }
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <form class="well form-horizontal" action="/signin" method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Sign In</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">First Name</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Last Name</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Phone #</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<!-- <div class="form-group">
+  <label class="col-md-4 control-label">Address</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="address" placeholder="Address" class="form-control" type="text">
+    </div>
+  </div>
+</div> -->
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">City</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="city" placeholder="city" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Country</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="country" placeholder="country" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Select Basic -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Ongoing Disaster</label>
+    <div class="col-md-6 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="disaster" class="form-control selectpicker" >
+      <option value=" " >Select the disaster affecting you.</option>
+      <option>Hurricane Maria</option>
+      <option>Tropical Storm Nate</option>
+      <option>Mexico City Earthquake</option>
+      <option>Hurricane Irma</option>
+      <option>Canyon Fire</option>
+      <option>Hurricane Harvey</option>
+    </select>
+  </div>
+</div>
+</div>
+
+
+<div id="victimdisplay" class="form-group" onclick="myFunction()">
+  <label class="col-md-4 control-label">Are you in need of relief?</label>
+
+    <div class="col-md-6 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+          <select id="chooser" name="disaster" class="form-control selectpicker" >
+            <option value=" ">Option</option>
+            <option value="victim">Yes</option>
+            <option value="donor">No</option>
+          </select>
+      </div>
+    </div>
+</div>
+
+
+
+
+<div class="form-group" id="victim1" style="display: none;">
+  <label class="col-md-2 col-form-label">Health</label>
+  <div class="col-md-3">
+    <input class="form-control" type="number" value="50" min="1" max="100">
+  </div>
+</div>
+
+<div class="form-group" id="victim2" style="display: none;">
+    <label class="col-md-2 col-form-label">Safety</label>
+    <div class="col-md-3">
+      <input class="form-control" type="number" value="50" min="1" max="100">
+    </div>
+</div>
+
+
+<div class="form-group" id="victim3" style="display: none;">
+  <label class="col-md-4 control-label">Relief Options</label>
+    <div class="col-md-6 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="disaster" class="form-control selectpicker" >
+      <option value=" " >Select the type of relief you need.</option>
+      <option>Financial</option>
+      <option>Food</option>
+      <option>Clothing</option>
+      <option>Temporary Housing</option>
+      <option>Medical</option>
+      <option>Wishlist of Essential Objects</option>
+    </select>
+  </div>
+</div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group" id="victim4" style="display: none;">
+  <label class="col-md-4 control-label">Need Description</label>
+    <div class="col-md-6 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" name="comment" placeholder="Describe your need in detail."></textarea>
+  </div>
+  </div>
+</div>
+
+<div class="form-group" id="donor" style="display: none;">
+     <label class="col-md-4 control-label">What kind of relief can you donate?</label>
+     <div class="col-md-4">
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation1" value="money" /> Financial
+             </label>
+         </div>
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation2" value="food" /> Food
+             </label>
+         </div>
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation3" value="clothes" /> Clothing
+             </label>
+         </div>
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation4" value="housing" /> Temporary Housing
+             </label>
+         </div>
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation5" value="medical" /> Medical
+             </label>
+         </div>
+         <div class="radio">
+             <label>
+                 <input type="radio" name="donation6" value="wishlist" /> Wishlist
+             </label>
+         </div>
+     </div>
+</div>
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Do you have a new emergency to declare?</label>
+    <div class="col-md-6 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" name="comment" placeholder="List location and description of the emergency."></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Success message -->
+<div class="alert alert-success" style="display: none;" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+</body>
+
+
+</html>

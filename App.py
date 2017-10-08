@@ -5,6 +5,14 @@ app = Flask(__name__)
 def main():
     return render_template('index.html')
 
+@app.route("/home")
+def showHome():
+    return render_template('index.html')
+
+@app.route("/form")
+def showFormx():
+    return render_template('formsample.html')
+
 @app.route('/showSignUp')
 def showSignUp():
     return render_template('signup.html')

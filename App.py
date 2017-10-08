@@ -22,9 +22,9 @@ mysql.init_app(app)
 def main():
     return render_template('index.html')
 
-@app.route("/form")
-def showFormx():
-    return render_template('formsample.html')
+@app.route("/showForm")
+def showForm():
+    return render_template('form.html')
 
 @app.route('/showSettings')
 def showSettings():
@@ -82,16 +82,16 @@ def signUp():
     cursor = conn.cursor()
     try:
         _name = request.form['inputName']
-        _email = request.form['inputEmail']
+        _username = request.form['inputUsername']
         _password = request.form['inputPassword']
 
-        print(_name,_email,_password)
+        print(_name,_username,_password)
         # validate the received values
-        if _name and _email and _password:
+        if _name and _username and _password:
             # All Good, let's call MySQL
             # _hashed_password = generate_password_hash(_password)
-            # cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
-            cursor.callproc('sp_createUser',(_name,_email,_password))
+            # cursor.callproc('sp_createUser',(_name,_username,_hashed_password))
+            cursor.callproc('sp_createUser',(_name,_username,_password))
             data = cursor.fetchall()
 
             if len(data) is 0:
@@ -122,36 +122,144 @@ def sendForm():
     cursor = conn.cursor()
     try:
         _name     = request.form['inputName']
-        _email    = request.form['inputEmail']
+        _username    = request.form['inputUsername']
         _password = request.form['inputPassword']
-        _setting1 = request.form['inputSetting1']
-        _setting2 = request.form['inputSetting2']
-        _setting3 = request.form['inputSetting3']
-        _setting4 = request.form['inputSetting4']
-        _setting5 = request.form['inputSetting5']
-        settingsValid = _setting1 and _setting2 and _setting3 and _setting4 and _setting5
+        _email = request.form['inputEmail']
+        _phone = request.form['inputPhone']
+        _city = request.form['inputCity']
+        _country = request.form['inputCountry']
+        _disaster = request.form['inputDisaster']
+        _need_relief = request.form['inputNeed_relief']
+        _emergency = request.form['inputEmergency']
+        _options = request.form['inputOptions']
+        _health = request.form['inputHealth']
+        _safety = request.form['inputSafety']
+        _description = request.form['inputDescription']
+        _donate = request.form['inputDonate']
 
-        print(_name,_email,_password,_setting1,_setting2,_setting3,_setting4,_setting5)
+        settingsValid = _email and _phone and _city and _country and _disaster and _need_relief and _emergency
+
+        print(_name,_username,_password,_email,_phone,_city,
+            _country,_disaster,_need_relief,_emergency,_health,_safety,
+            _description,_donate,_options)
         # validate the received values
-        if _name and _email and _password and settingsValid:
-            # All Good, let's call MySQL
-            # _hashed_password = generate_password_hash(_password)
-            # cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
-            # cursor.execute("SELECT * FROM tbl_user")
-            # all_users = [list(i) for i in cursor.fetchall()]
-            # user = []
-            # for lst in all_users:
-            #     if _name == lst[2]:
-            #         user = lst
-            # if (user == []):
-            #     print("User not found!")
-            #     return json.dumps({'message':'User not found!'})
-            # if (user[3]!= _password):
-            #     print("Incorrect Password!")
-            #     return json.dumps({'message':'Incorrect Password!'})
 
-            cursor.callproc('sp_editUser',(_name,_email,_password,
-                _setting1,_setting2,_setting3,_setting4,_setting5))
+        if _name and _username and _password and settingsValid:
+
+            cursor.callproc('sp_editUser',(_name,_username,_password,_email,
+                _phone,_city,_country,_disaster,_need_relief,_emergency,
+                _health,_safety,_description,_donate,_options))
+
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                print('User Profile updated successfully!')
+                return showHome()
+            else:
+                print('User does not exist!')
+                return json.dumps({'error':str(data[0])})
+        else:
+            print('Enter the required fields')
+            return json.dumps({'html':'<span>Enter the required fields</span>'})
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/sendRelief',methods=['POST'])
+def sendRelief():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        _name     = request.form['inputName']
+        _username = request.form['inputUsername']
+        _password = request.form['inputPassword']
+        _email = request.form['inputEmail']
+        _phone = request.form['inputPhone']
+        _city = request.form['inputCity']
+        _country = request.form['inputCountry']
+        _disaster    = request.form['inputDisaster']
+        _need_relief = request.form['inputNeed_relief']
+        _emergency   = request.form['inputEmergency']
+
+        _health      = request.form['inputHealth']
+        _safety      = request.form['inputSafety']
+        _description = request.form['inputDescription']
+        _options     = request.form['inputOptions']
+
+        _donate      = False #request.form['inputDonate']
+
+        settingsValid = _email and _phone and _city and _country
+
+        print(_name,_username,_password,_email,_phone,_city,
+            _country,_disaster,_need_relief,_emergency,_health,_safety,
+            _description,_donate,_options)
+
+        # validate the received values
+
+        if _name and _username and _password and settingsValid:
+
+            cursor.callproc('sp_editUser',(_name,_username,_password,_email,
+                _phone,_city,_country,_disaster,_need_relief,_emergency,
+                _options,_health,_safety,_description,_donate))
+
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                print('User Profile updated successfully!')
+                return showHome()
+            else:
+                print('User does not exist!')
+                return json.dumps({'error':str(data[0])})
+        else:
+            print('Enter the required fields')
+            return json.dumps({'html':'<span>Enter the required fields</span>'})
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/sendNoRelief',methods=['POST'])
+def sendNoRelief():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        print('hi')
+        _name     = request.form['inputName']
+        _username    = request.form['inputUsername']
+        _password = request.form['inputPassword']
+        _email = request.form['inputEmail']
+        _phone = request.form['inputPhone']
+        _city = request.form['inputCity']
+        _country = request.form['inputCountry']
+        _disaster    = request.form['inputDisaster']
+        _need_relief = request.form['inputNeed_relief']
+        _emergency   = request.form['inputEmergency']
+
+        _health      = False #request.form['inputHealth']
+        _safety      = False #request.form['inputSafety']
+        _description = False #request.form['inputDescription']
+        _options     = False #request.form['inputOptions']
+
+        _donate      = request.form['inputDonate']
+
+        settingsValid = _email and _phone and _city and _country
+
+        print(_name,_username,_password,_email,_phone,_city,
+            _country,_disaster,_need_relief,_emergency,_health,_safety,
+            _description,_donate,_options)
+
+        # validate the received values
+
+        if _name and _username and _password and settingsValid:
+
+            cursor.callproc('sp_editUser',(_name,_username,_password,_email,
+                _phone,_city,_country,_disaster,_need_relief,_emergency,
+                _options,_health,_safety,_description,_donate))
 
             data = cursor.fetchall()
 
@@ -200,16 +308,16 @@ def sendForm():
 #     if flask.request.method == 'GET':
 #         return '''
 #                <form action='login' method='POST'>
-#                 <input type='text' name='email' id='email' placeholder='email'></input>
+#                 <input type='text' name='username' id='username' placeholder='username'></input>
 #                 <input type='password' name='pw' id='pw' placeholder='password'></input>
 #                 <input type='submit' name='submit'></input>
 #                </form>
 #                '''
 #
-#     email = flask.request.form['email']
-#     if flask.request.form['pw'] == all_users[email]['pw']:
+#     username = flask.request.form['username']
+#     if flask.request.form['pw'] == all_users[username]['pw']:
 #         user = User()
-#         user.id = email
+#         user.id = username
 #         flask_login.login_user(user)
 #         return flask.redirect(flask.url_for('protected'))
 #

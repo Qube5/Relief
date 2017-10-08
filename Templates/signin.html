@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign In</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <link rel=icon href=../static/images/leaf.png>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/showHome">Home</a></li>&nbsp
+            <!-- <li role="presentation"><a href="#">Sign In</a></li> -->
+            <li role="presentation" class="active"><a href="/showSignUp">Sign Up</a></li>&nbsp
+            <li role="presentation"><a href="/showSettings">Settings</a></li>
+          </ul>
+        </nav>
+        <h1>relief</h1>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Sign in</h1>
+        <form class="form-signin">
+        <label for="inputName" class="sr-only">Username</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+      </form>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Company 2015</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Settings</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <link rel=icon href=../static/images/leaf.png>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/showHome">Home</a></li>&nbsp
+            <li role="presentation"><a href="/showSignIn">Sign In</a></li>&nbsp
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h1>relief</h1>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Settings</h1>
+        <form class="form-signin">
+        <label for="inputName" class="sr-only">Full Name</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <label for="inputSetting1" class="sr-only">Setting 1</label>
+        <input type="setting1" name="inputSetting1" id="inputSetting1" class="form-control" placeholder="Setting 1" required>
+        <label for="inputSetting2" class="sr-only">Setting 2</label>
+        <input type="setting2" name="inputSetting2" id="inputSetting2" class="form-control" placeholder="Setting 2" required>
+        <label for="inputSetting3" class="sr-only">Setting 3</label>
+        <input type="setting3" name="inputSetting3" id="inputSetting3" class="form-control" placeholder="Setting 3" required>
+        <label for="inputSetting4" class="sr-only">Setting 4</label>
+        <input type="setting4" name="inputSetting4" id="inputSetting4" class="form-control" placeholder="Setting 4" required>
+        <label for="inputSetting5" class="sr-only">Setting 5</label>
+        <input type="setting5" name="inputSetting5" id="inputSetting5" class="form-control" placeholder="Setting 5" required>
+
+        <button id="btnSendForm" class="btn btn-lg btn-primary btn-block" type="button">Send Form</button>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                alert(messages[i]);
+              }
+            </script>
+          {% endif %}
+        {% endwith %}
+        </form>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Company 2015</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

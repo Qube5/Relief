@@ -1,13 +1,6 @@
 # Relief
-## Screenshots
 
-![Database](/Relief Screenshots/Database.png?raw=true "Database")
-
-https://puu.sh/xT7Ef/20774888ab.png
-https://puu.sh/xT7zk/638edca7cf.png
-https://puu.sh/xT7vP/f81c87aa3f.png
-https://puu.sh/xT7uU/48b220106a.png
-https://puu.sh/xT7sI/da09e3a01d.png
+![Home](https://puu.sh/xT8gV/7dbe948618.jpg?raw=true "Home")
 
 ## Inspiration
 
@@ -36,3 +29,24 @@ We learned how time-intensive it is to make a quality product, and how much this
 ## What's next for Relief
 
 The next steps are to develop it further, by implementing the UI mockups directly in the website, and creating the desired mobile app. After the application is fully developed, then we can begin to promote the product to gather users. We would try to reach out to organizations that already are doing disaster relief support and put them on our platform. One other product we can introduce is an integration with DisasterRelief.gov for users in disaster situations to be able to see what government resources are available as well. This would allow Relief to become a homepage for all disaster relief services and allow all of the resources to be clear and organized in these situations.
+
+## Backend Webpage Snippets
+
+![Home](https://puu.sh/xT7sI/da09e3a01d.png?raw=true "Home")
+
+![Sign Up](https://puu.sh/xT7uU/48b220106a.png?raw=true "Sign Up")
+
+![Sign In](https://puu.sh/xT7vP/f81c87aa3f.png?raw=true "Sign In")
+
+![Form](https://puu.sh/xT7zk/638edca7cf.png?raw=true "Form")
+
+![Database](https://puu.sh/xT7Ef/20774888ab.png?raw=true "Database")
+
+## Frontend Webpage Snippets
+
+![Home](https://puu.sh/xT8gV/7dbe948618.jpg?raw=true "Home")
+
+![Disaster](https://puu.sh/xT8jm/a69cc526ea.jpg?raw=true "Disaster")
+
+![User](https://puu.sh/xT8kV/03620e91b4.jpg?raw=true "User")
+

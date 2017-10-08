@@ -16,7 +16,8 @@
           <ul class="nav nav-pills pull-right">
             <li role="presentation" ><a href="/showHome">Home</a></li>&nbsp
             <li role="presentation"><a href="/showSignIn">Sign In</a></li>&nbsp
-            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+            <li role="presentation"><a href="/showSignUp">Sign Up</a></li>&nbsp
+            <li role="presentation"><a href="/showForm">Profile Form</a></li>
           </ul>
         </nav>
         <h1>relief</h1>
@@ -27,24 +28,40 @@
         <form class="form-signin">
         <label for="inputName" class="sr-only">Full Name</label>
         <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="username" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email" required>
 
-        <label for="inputSetting1" class="sr-only">Setting 1</label>
-        <input type="setting1" name="inputSetting1" id="inputSetting1" class="form-control" placeholder="Setting 1" required>
-        <label for="inputSetting2" class="sr-only">Setting 2</label>
-        <input type="setting2" name="inputSetting2" id="inputSetting2" class="form-control" placeholder="Setting 2" required>
-        <label for="inputSetting3" class="sr-only">Setting 3</label>
-        <input type="setting3" name="inputSetting3" id="inputSetting3" class="form-control" placeholder="Setting 3" required>
-        <label for="inputSetting4" class="sr-only">Setting 4</label>
-        <input type="setting4" name="inputSetting4" id="inputSetting4" class="form-control" placeholder="Setting 4" required>
-        <label for="inputSetting5" class="sr-only">Setting 5</label>
-        <input type="setting5" name="inputSetting5" id="inputSetting5" class="form-control" placeholder="Setting 5" required>
+        <label for="inputPhone" class="sr-only">Phone</label>
+        <input type="phone" name="inputPhone" id="inputPhone" class="form-control" placeholder="Phone" required>
+        <label for="inputCity" class="sr-only">City</label>
+        <input type="city" name="inputCity" id="inputCity" class="form-control" placeholder="City" required>
+        <label for="inputCountry" class="sr-only">Country</label>
+        <input type="country" name="inputCountry" id="inputCountry" class="form-control" placeholder="Country" required>
+        <label for="inputDisaster" class="sr-only">Disaster</label>
+        <input type="disaster" name="inputDisaster" id="inputDisaster" class="form-control" placeholder="Disaster" required>
+        <label for="inputNeed_relief" class="sr-only">Need Relief?</label>
+        <input type="need_relief" name="inputNeed_relief" id="inputNeed_relief" class="form-control" placeholder="Need Relief?" required>
+        <label for="inputEmergency" class="sr-only">New Emergency</label>
+        <input type="emergency" name="inputEmergency" id="inputEmergency" class="form-control" placeholder="New Emergency" required>
+        <label for="inputOptions" class="sr-only">Relief Options</label>
+        <input type="options" name="inputOptions" id="inputOptions" class="form-control" placeholder="Relief Options" required>
 
-        <button id="btnSendForm" class="btn btn-lg btn-primary btn-block" type="button">Send Form</button>
-        {% with messages = get_flashed_messages() %}
+        <label for="inputHealth" class="sr-only">Health</label>
+        <input type="health" name="inputHealth" id="inputHealth" class="form-control" placeholder="Health" required>
+        <label for="inputSafety" class="sr-only">Safety</label>
+        <input type="safety" name="inputSafety" id="inputSafety" class="form-control" placeholder="Safety" required>
+        <label for="inputDescription" class="sr-only">Description</label>
+        <input type="description" name="inputDescription" id="inputDescription" class="form-control" placeholder="Description" required>
+        <label for="inputDonate" class="sr-only">Donate</label>
+        <input type="donate" name="inputDonate" id="inputDonate" class="form-control" placeholder="Donate" required>
+
+        <button id="btnSendForm" class="btn btn-lg btn-primary btn-block" type="button">Send Relief</button>
+
+        <!-- {% with messages = get_flashed_messages() %}
           {% if messages %}
             <script>
               var messages = {{ messages | safe }};
@@ -53,7 +70,7 @@
               }
             </script>
           {% endif %}
-        {% endwith %}
+        {% endwith %} -->
         </form>
       </div>
 
